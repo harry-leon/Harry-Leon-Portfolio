@@ -1,0 +1,31 @@
+<svg width="800" height="1000" viewBox="0 0 800 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="1000" rx="56" fill="#0B1020"/>
+  <rect x="22" y="22" width="756" height="956" rx="40" fill="url(#bg)"/>
+  <circle cx="590" cy="168" r="126" fill="url(#glow)" fill-opacity="0.6"/>
+  <circle cx="224" cy="786" r="186" fill="url(#glow2)" fill-opacity="0.35"/>
+  <path d="M108 762C108 611.779 229.779 490 380 490H420C570.221 490 692 611.779 692 762V836H108V762Z" fill="#121A30" fill-opacity="0.85"/>
+  <circle cx="400" cy="346" r="168" fill="#1F2A44"/>
+  <circle cx="400" cy="304" r="126" fill="#F1F5F9"/>
+  <path d="M286 406C318.8 446.8 360.667 467.2 412 467.2C463.333 467.2 504.867 446.8 536.6 406V550H286V406Z" fill="#F1F5F9"/>
+  <path d="M266 290C266 216.546 325.546 157 399 157H401C474.454 157 534 216.546 534 290V343C534 355.703 523.703 366 511 366H289C276.297 366 266 355.703 266 343V290Z" fill="#101827"/>
+  <path d="M262 303C281.333 287 302.667 279 326 279C349.333 279 375.333 288.667 404 308C431.333 325.333 460.333 334 491 334C513.667 334 535 328.667 555 318V248C555 175.099 495.901 116 423 116H377C304.099 116 245 175.099 245 248V332C250.333 322.667 256 313 262 303Z" fill="#050816"/>
+  <rect x="176" y="580" width="448" height="218" rx="36" fill="#0F172A" fill-opacity="0.86" stroke="#A855F7" stroke-opacity="0.24"/>
+  <text x="400" y="664" text-anchor="middle" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="88" font-weight="700">HL</text>
+  <text x="400" y="724" text-anchor="middle" fill="#C084FC" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="600" letter-spacing="4">BACKEND JAVA</text>
+  <text x="400" y="778" text-anchor="middle" fill="#CBD5E1" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="500">HARRY LEON</text>
+  <defs>
+    <linearGradient id="bg" x1="96" y1="82" x2="712" y2="920" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#111827"/>
+      <stop offset="0.55" stop-color="#101828"/>
+      <stop offset="1" stop-color="#1E1B4B"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(590 168) rotate(90) scale(126)">
+      <stop stop-color="#22D3EE"/>
+      <stop offset="1" stop-color="#22D3EE" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(224 786) rotate(90) scale(186)">
+      <stop stop-color="#A855F7"/>
+      <stop offset="1" stop-color="#A855F7" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+</svg>

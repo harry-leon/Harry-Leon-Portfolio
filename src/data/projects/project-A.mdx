@@ -1,0 +1,75 @@
+---
+title: AutoWash Pro - Smart Car Wash Management System
+image: /projects/project-A/autowash-gallery.jpg
+description: A business-heavy full-stack car wash platform covering 259 business rules across booking, payments, loyalty, operations, and administration.
+startDate: 2026-05
+endDate: 2026-07
+techStack:
+  - Java 21
+  - Spring Boot 3.3
+  - Spring Security
+  - Spring Data JPA
+  - PostgreSQL
+  - Flyway
+  - JWT
+  - MapStruct
+  - Next.js 14
+  - React 18
+  - TypeScript
+  - TailwindCSS
+  - Zustand
+  - TanStack Query
+  - GitHub Actions
+teamSize: 4
+role: Team Leader / Backend Developer
+githubUrl: https://github.com/SmartAutomatedCarWash/Smart-Automated-Car-Wash-Management-System
+liveUrl: https://auracarwash.site
+---
+
+# Overview
+
+**AutoWash Pro**, also branded as **AURA Car Care**, is a modular full-stack platform built for the SWP391 capstone at FPT University HCMC. The system digitizes the full car wash workflow for **Customer, Staff, Manager, and Admin** users, with a business scope defined by **259 completed business rules** across booking, operations, loyalty, communication, and reporting.
+
+## Business Scope
+
+- **Authentication and profiles:** phone or email login, OTP verification, Google OAuth, JWT access and refresh tokens, role-based access control, profile preferences, and avatar management.
+- **Booking domain:** vehicle management, package or combo selection, add-on validation, slot hold, availability checks, pricing snapshots, OTP booking confirmation, cancellation rules, and no-show handling.
+- **Payments and discounts:** VNPay checkout, SePay webhook verification, cash and owned-combo payment flows, automatic promotions, claimed vouchers, and payment status lifecycle management.
+- **Loyalty and retention:** point ledger, tier upgrades, voucher redemption, combo ownership and usage tracking, post-service reviews, notification campaigns, and personalized discount eligibility.
+- **Operations and administration:** wash-session assignment, manager command center, KPI dashboards, staff workload controls, scheduled jobs, WebSocket updates, service catalog management, blogs, announcements, and reporting.
+
+## My Responsibilities
+
+- Led a four-member team, broke the domain into deliverable modules, and coordinated backend and frontend integration.
+- Designed PostgreSQL schemas, Spring Data JPA entities, and Flyway migrations for bookings, payments, discounts, loyalty, combos, wash sessions, and notifications.
+- Implemented Spring Boot REST APIs and business rules for booking lifecycle management, slot validation, discount application, payment processing, and admin operations.
+- Built backend logic for OTP-based flows, JWT security, role-based authorization, scheduled cleanup jobs, and real-time operational updates.
+- Integrated backend APIs with the Next.js frontend and supported deployment, testing, and project documentation.
+
+## Core Capabilities
+
+- **Identity and security:** unique phone and email validation, OTP activation and reset flows, Google login, JWT refresh token handling, and four-role authorization for Customer, Staff, Manager, and Admin.
+- **Booking lifecycle:** active vehicle ownership checks, configurable business hours, slot hold and release, booking pricing snapshots, check-in, in-progress wash tracking, completion, cancellation windows, and no-show detection.
+- **Payments and promotions:** VNPay payment links and callbacks, SePay transfer verification, owned-combo zero-amount payments, promotion auto-apply rules, voucher claiming with points, and payment state transitions.
+- **Loyalty and customer retention:** five loyalty tiers, tier-based multipliers, point transactions, first-booking and review bonuses, voucher offers by tier, combo purchase and expiration rules, and customer reward history.
+- **Operations:** staff assignment, active session queues, manager intervention settings, overload thresholds, reminder jobs, slot cleanup, pending payment cleanup, and WebSocket broadcasting for booking and wash-session updates.
+- **Administration:** dashboards for revenue and booking metrics, customer and staff management, catalog CRUD, blog and review management, announcement campaigns, and configurable system settings.
+
+## Architecture
+
+### Frontend
+
+Next.js 14 App Router with React 18 and TypeScript. The frontend uses a feature-sliced structure, Tailwind CSS and Radix UI for presentation, Zustand for client state, TanStack Query for server state, Axios for API communication, React Hook Form for forms, and Recharts for analytics.
+
+### Backend
+
+Java 21 and Spring Boot 3.3.5 organized as a layered modular monolith. REST controllers call service-layer use cases backed by DTOs, MapStruct mappers, Spring Data JPA repositories, PostgreSQL, and Flyway migrations. Spring Security, JJWT, scheduled jobs, and WebSocket messaging support the core operational flows.
+
+### Delivery and Documentation
+
+GitHub Actions builds the Next.js frontend and runs the Maven backend build with tests on pull requests and pushes to the main branches. Dependabot manages dependency updates, while OpenAPI and Swagger UI document and test the REST API.
+
+## Links
+
+- [Source code on GitHub](https://github.com/SmartAutomatedCarWash/Smart-Automated-Car-Wash-Management-System)
+- [Live application](https://auracarwash.site)
