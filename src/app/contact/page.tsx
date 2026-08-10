@@ -1,13 +1,6 @@
 import { Metadata } from "next"
 import Link from "next/link"
-import {
-  FaEnvelope,
-  FaGithub,
-  FaGlobe,
-  FaLinkedin,
-  FaMapMarkerAlt,
-  FaPhone,
-} from "react-icons/fa"
+import { FaEnvelope, FaGithub, FaGlobe, FaLinkedin, FaMapMarkerAlt, FaPhone } from "react-icons/fa"
 import { homeIntroConfig } from "@/data/content"
 
 const contactItems = [
@@ -74,9 +67,9 @@ export default function ContactPage() {
               Let&apos;s build secure backend systems that hold up in production.
             </h1>
             <p className="max-w-2xl text-lg leading-8 text-gray-600 dark:text-gray-300">
-              I am a Backend Java Developer focused on Spring Boot, REST APIs, PostgreSQL,
-              security, and business-heavy systems. If you have an internship, junior backend
-              role, or project collaboration in mind, reach out through any channel below.
+              I am a Backend Java Developer focused on Spring Boot, REST APIs, PostgreSQL, security,
+              and business-heavy systems. If you have an internship, junior backend role, or project
+              collaboration in mind, reach out through any channel below.
             </p>
           </div>
 
@@ -87,7 +80,11 @@ export default function ContactPage() {
                 <Link
                   key={item.label}
                   href={item.href}
-                  target={item.href.startsWith("mailto:") || item.href.startsWith("tel:") ? undefined : "_blank"}
+                  target={
+                    item.href.startsWith("mailto:") || item.href.startsWith("tel:")
+                      ? undefined
+                      : "_blank"
+                  }
                   rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
                   className="group rounded-3xl border border-gray-300 bg-white/70 p-5 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-accent-500/60 hover:shadow-lg dark:border-gray-800 dark:bg-zinc-900/80 dark:hover:border-accent-500/60"
                 >
@@ -124,7 +121,9 @@ export default function ContactPage() {
 
           <div className="space-y-5 text-gray-600 dark:text-gray-300">
             <div>
-              <h2 className="mb-2 text-xl font-bold text-gray-900 dark:text-white">What I can help with</h2>
+              <h2 className="mb-2 text-xl font-bold text-gray-900 dark:text-white">
+                What I can help with
+              </h2>
               <p className="leading-7">
                 Spring Boot backend services, RESTful API design, authentication and RBAC,
                 PostgreSQL data modeling, payment or booking workflows, and full-stack integration
@@ -133,7 +132,9 @@ export default function ContactPage() {
             </div>
 
             <div>
-              <h2 className="mb-2 text-xl font-bold text-gray-900 dark:text-white">Preferred contact</h2>
+              <h2 className="mb-2 text-xl font-bold text-gray-900 dark:text-white">
+                Preferred contact
+              </h2>
               <p className="leading-7">
                 Email is the cleanest channel for role details, technical discussions, and project
                 scope. For quick coordination, phone and LinkedIn are also available.
@@ -144,7 +145,8 @@ export default function ContactPage() {
               <p className="font-semibold text-gray-900 dark:text-white">Current focus</p>
               <p>
                 Seeking backend Java internship or junior backend opportunities where I can ship
-                production-quality features and grow deeper in distributed systems and application security.
+                production-quality features and grow deeper in distributed systems and application
+                security.
               </p>
             </div>
           </div>

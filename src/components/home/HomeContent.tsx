@@ -22,11 +22,7 @@ const heroProfile = {
   role: "Backend Java Developer",
 }
 
-const rotatingHeroTitles = [
-  "Ha Thuc Quoc Hung",
-  "Harry Leon",
-  "Backend Java Developer",
-]
+const rotatingHeroTitles = ["Ha Thuc Quoc Hung", "Harry Leon", "Backend Java Developer"]
 
 const typingSpeedMs = 70
 const pauseAfterTypedMs = 1200
@@ -195,9 +191,7 @@ export default function HomeContent({ work, projects }: HomeContentProps) {
                 key={group.category}
                 className="rounded-xl border border-gray-200 bg-gray-50 p-5 dark:border-gray-800 dark:bg-gray-900"
               >
-                <h3 className="font-semibold text-gray-900 dark:text-gray-100">
-                  {group.category}
-                </h3>
+                <h3 className="font-semibold text-gray-900 dark:text-gray-100">{group.category}</h3>
                 <p className="mt-2 leading-relaxed text-gray-600 dark:text-gray-300">
                   {group.skills.join(", ")}
                 </p>

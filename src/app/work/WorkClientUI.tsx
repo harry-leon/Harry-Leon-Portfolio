@@ -175,8 +175,8 @@ export default function WorkClientUI({
             <FaFrown className="text-4xl md:text-5xl mb-3 text-gray-400 dark:text-gray-500" />
             <p className="text-lg md:text-xl lg:text-2xl font-semibold">No education items found</p>
             <p className="text-sm md:text-base lg:text-lg mt-2 max-w-2xl">
-              The selected institution filters didn&apos;t match any education items. Try
-              changing or clearing your filters.
+              The selected institution filters didn&apos;t match any education items. Try changing
+              or clearing your filters.
             </p>
           </motion.div>
         )}

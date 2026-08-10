@@ -60,7 +60,11 @@ export const homeIntroConfig = {
    */
   additionalFacts: [
     { icon: FaGithub, label: "github.com/harry-leon", href: "https://github.com/harry-leon" },
-    { icon: FaLinkedin, label: "linkedin.com/in/harryleon", href: "https://www.linkedin.com/in/harryleon" },
+    {
+      icon: FaLinkedin,
+      label: "linkedin.com/in/harryleon",
+      href: "https://www.linkedin.com/in/harryleon",
+    },
   ] as Array<{ icon: IconType; label: string; href?: string }>,
 
   /**

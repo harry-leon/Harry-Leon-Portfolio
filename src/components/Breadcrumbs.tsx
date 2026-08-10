@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation"
 import { homeIntroConfig } from "@/data/content"
 import { cn, getInitials } from "@/lib/utils"
 
-const headerDisplayName = "Harry Leon"
+const headerDisplayName = homeIntroConfig.name
 
 /**
  * The "breadcrumbs" component that displays the current path as a series of links.

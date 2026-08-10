@@ -5,7 +5,15 @@ import Link from "next/link"
 import { notFound } from "next/navigation"
 import { compileMDX } from "next-mdx-remote/rsc"
 import { BsCardImage, BsStack } from "react-icons/bs"
-import { FaUsers, FaUserTie, FaClock, FaGithub, FaBook, FaExternalLinkAlt, FaGlobe } from "react-icons/fa"
+import {
+  FaUsers,
+  FaUserTie,
+  FaClock,
+  FaGithub,
+  FaBook,
+  FaExternalLinkAlt,
+  FaGlobe,
+} from "react-icons/fa"
 import rehypeHighlight from "rehype-highlight"
 import remark_gfm from "remark-gfm"
 import AnimatedArticle from "@/components/AnimatedArticle"

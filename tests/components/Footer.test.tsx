@@ -14,7 +14,7 @@ describe("Footer", () => {
   it("renders the copyright text with the current year", () => {
     render(<Footer />)
     const year = new Date().getFullYear()
-    expect(screen.getByText(new RegExp(`Ã‚Â© ${year}`))).toBeDefined()
+    expect(screen.getByText(new RegExp(`\\u00A9 ${year}`))).toBeDefined()
   })
 
   it("renders the copyright name", () => {
