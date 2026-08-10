@@ -1,7 +1,7 @@
 "use client"
 
-import Link from "next/link"
 import { motion } from "framer-motion"
+import Link from "next/link"
 import { factIconMap, homeIntroConfig } from "@/data/content"
 import { cn } from "@/lib/utils"
 import { fadeUpVariants } from "./animations"
