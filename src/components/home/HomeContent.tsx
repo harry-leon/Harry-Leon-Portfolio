@@ -65,7 +65,7 @@ export default function HomeContent({ work, projects }: HomeContentProps) {
   }, [activeHeroTitleIndex])
 
   return (
-    <MotionConfig reducedMotion="user">
+    <>
       <section className="px-4 max-w-5xl mx-auto">
         <div
           id="hero"
@@ -74,9 +74,8 @@ export default function HomeContent({ work, projects }: HomeContentProps) {
           <div>
             <motion.div
               initial="hidden"
-              whileInView="visible"
+              animate="visible"
               variants={fadeUpVariants}
-              viewport={{ once: true }}
               className="text-left"
             >
               <div className="mb-4 min-h-[4.5rem] sm:min-h-[5.5rem]">
@@ -111,8 +110,7 @@ export default function HomeContent({ work, projects }: HomeContentProps) {
 
           <motion.div
             initial={{ opacity: 0, x: 24 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.55, ease: "easeOut" }}
             className="mx-auto w-full max-w-sm [perspective:1600px]"
           >
@@ -211,6 +209,6 @@ export default function HomeContent({ work, projects }: HomeContentProps) {
           </div>
         </motion.div>
       </section>
-    </MotionConfig>
+    </>
   )
 }
