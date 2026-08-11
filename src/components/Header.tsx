@@ -22,6 +22,7 @@ export default function Header() {
   const [activeSection, setActiveSection] = useState("hero")
   const pathname = usePathname()
   const isHome = pathname === "/"
+  const hamburgerRef = useRef<HTMLButtonElement>(null)
 
   // ── Scroll state detection ───────────────────────────────────────────────
 
@@ -160,6 +161,7 @@ export default function Header() {
 
             {/* Mobile hamburger */}
             <button
+              ref={hamburgerRef}
               className={cn(
                 "md:hidden flex flex-col items-center justify-center gap-1.5",
                 "w-10 h-10 rounded-xl cursor-pointer",
@@ -191,6 +193,7 @@ export default function Header() {
             onNavigate={scrollToSection}
             activeSection={activeSection}
             isHome={isHome}
+            toggleRef={hamburgerRef}
           />
         )}
       </AnimatePresence>

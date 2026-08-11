@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import Link from "next/link"
 import { useEffect, useRef } from "react"
+import type { RefObject } from "react"
 import { FaArrowRight } from "react-icons/fa"
 import { useClickOutside } from "@/hooks/useClickOutside"
 import { navItems } from "@/lib/constants"
@@ -13,6 +14,7 @@ interface MobileMenuProps {
   onNavigate: (sectionId: string) => void
   activeSection: string
   isHome: boolean
+  toggleRef?: RefObject<HTMLButtonElement | null>
 }
 
 /**
@@ -23,11 +25,15 @@ export default function MobileMenu({
   onNavigate,
   activeSection,
   isHome,
+  toggleRef,
 }: MobileMenuProps) {
   const menuRef = useRef<HTMLDivElement | null>(null)
 
-  // Close when clicking outside of the menu container
-  useClickOutside(menuRef, onClose, { enabled: true, closeOnEscape: true })
+  // Close when clicking outside of the menu container (excluding the hamburger toggle)
+  useClickOutside(toggleRef ? [menuRef, toggleRef] : menuRef, onClose, {
+    enabled: true,
+    closeOnEscape: true,
+  })
 
   useEffect(() => {
     // Prevent background scroll when mobile menu is open
