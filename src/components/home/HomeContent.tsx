@@ -67,7 +67,10 @@ export default function HomeContent({ work, projects }: HomeContentProps) {
   return (
     <MotionConfig reducedMotion="user">
       <section className="px-4 max-w-5xl mx-auto">
-        <div id="hero" className="mt-2 min-h-[calc(100vh-11rem)] grid items-center gap-10 lg:grid-cols-[minmax(0,1.4fr)_minmax(300px,0.8fr)]">
+        <div
+          id="hero"
+          className="mt-2 min-h-[calc(100vh-11rem)] grid items-center gap-10 lg:grid-cols-[minmax(0,1.4fr)_minmax(300px,0.8fr)]"
+        >
           <div>
             <motion.div
               initial="hidden"

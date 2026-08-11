@@ -61,7 +61,6 @@ export default function Footer() {
       )}
       id="footerPortfolio"
     >
-
       <div className="relative flex justify-center flex-wrap gap-4 mb-4">
         <SocialLinks />
       </div>

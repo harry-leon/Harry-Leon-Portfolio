@@ -158,8 +158,6 @@ export default function Header() {
               <FaArrowRight className="h-3 w-3" />
             </Link>
 
-
-
             {/* Mobile hamburger */}
             <button
               className={cn(

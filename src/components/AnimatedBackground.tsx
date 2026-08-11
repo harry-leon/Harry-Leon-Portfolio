@@ -86,10 +86,7 @@ function drawParticleSystem(
     if (alpha > 0.4) {
       ctx.beginPath()
       ctx.arc(p.x, p.y, p.size * 3, 0, Math.PI * 2)
-      const gradient = ctx.createRadialGradient(
-        p.x, p.y, 0,
-        p.x, p.y, p.size * 3
-      )
+      const gradient = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.size * 3)
       gradient.addColorStop(0, PURPLE_NEON.particle.replace("ALPHA", "0.25"))
       gradient.addColorStop(1, "transparent")
       ctx.fillStyle = gradient
@@ -110,9 +107,7 @@ function drawParticleSystem(
           ctx.beginPath()
           ctx.moveTo(particles[i].x, particles[i].y)
           ctx.lineTo(particles[j].x, particles[j].y)
-          ctx.strokeStyle = PURPLE_NEON.networkLine.replace(
-            "ALPHA", lineAlpha.toFixed(4)
-          )
+          ctx.strokeStyle = PURPLE_NEON.networkLine.replace("ALPHA", lineAlpha.toFixed(4))
           ctx.stroke()
         }
       }
@@ -166,9 +161,7 @@ export default function AnimatedBackground() {
 
       const w = window.innerWidth
       const h = window.innerHeight
-      const reducedMotion = window.matchMedia(
-        "(prefers-reduced-motion: reduce)"
-      ).matches
+      const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches
 
       // Smooth cursor lerp
       const mouse = mouseRef.current
@@ -211,10 +204,7 @@ export default function AnimatedBackground() {
   if (mounted && !isDark) return null
 
   return (
-    <div
-      className="fixed inset-0 -z-10 pointer-events-none overflow-hidden"
-      aria-hidden="true"
-    >
+    <div className="fixed inset-0 -z-10 pointer-events-none overflow-hidden" aria-hidden="true">
       {/* Layer 1: Base background */}
       <div className="absolute inset-0 bg-[#09090f]" />
 
@@ -281,9 +271,7 @@ function CursorGlow({ mouseRef, mounted }: CursorGlowProps) {
   useEffect(() => {
     if (!mounted) return
 
-    const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches
     if (prefersReducedMotion) return
 
     let localSmoothX = 0
@@ -291,11 +279,7 @@ function CursorGlow({ mouseRef, mounted }: CursorGlowProps) {
     let raf = 0
 
     function animateGlow() {
-      if (
-        isMobile(window.innerWidth) ||
-        !glowRef.current ||
-        !mouseRef.current
-      ) {
+      if (isMobile(window.innerWidth) || !glowRef.current || !mouseRef.current) {
         raf = requestAnimationFrame(animateGlow)
         return
       }
@@ -305,8 +289,7 @@ function CursorGlow({ mouseRef, mounted }: CursorGlowProps) {
       localSmoothY += (mouse.y - localSmoothY) * CURSOR_LERP_FACTOR
 
       glowRef.current.style.transform = `translate3d(${localSmoothX - 200}px, ${localSmoothY - 200}px, 0)`
-      glowRef.current.style.opacity =
-        mouse.x === 0 && mouse.y === 0 ? "0" : "1"
+      glowRef.current.style.opacity = mouse.x === 0 && mouse.y === 0 ? "0" : "1"
 
       raf = requestAnimationFrame(animateGlow)
     }

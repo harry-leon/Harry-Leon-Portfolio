@@ -66,18 +66,15 @@ export default function ContactPage() {
   return (
     <section className="relative min-h-[calc(100vh-5rem)] text-white">
       <div className="relative mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8 lg:py-12">
-        
         {/* Title above the grid */}
         <div className="max-w-3xl space-y-6 pt-4 sm:pt-6 mb-8 sm:mb-10">
           <h1 className="text-4xl font-black leading-[0.95] tracking-tight text-white sm:text-6xl lg:text-7xl">
-            Let&apos;s build something impactful{" "}
-            <span className="text-violet-400">together.</span>
+            Let&apos;s build something impactful <span className="text-violet-400">together.</span>
           </h1>
         </div>
 
         {/* 2-column grid starting below the title */}
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1.4fr_1fr] lg:items-start">
-          
           {/* Left Column: Message Form */}
           <div className={cn(panelClassName, "p-6 sm:p-7")}>
             <div className="mb-6 flex items-start gap-3">
@@ -189,7 +186,6 @@ export default function ContactPage() {
               })}
             </div>
           </aside>
-
         </div>
       </div>
     </section>
