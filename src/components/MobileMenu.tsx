@@ -2,8 +2,7 @@
 
 import { motion } from "framer-motion"
 import Link from "next/link"
-import { useEffect, useRef } from "react"
-import type { RefObject } from "react"
+import { useEffect, useRef, type RefObject } from "react"
 import { FaArrowRight } from "react-icons/fa"
 import { useClickOutside } from "@/hooks/useClickOutside"
 import { navItems } from "@/lib/constants"
