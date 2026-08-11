@@ -5,9 +5,9 @@ import { Gabarito } from "next/font/google"
 import { ThemeProvider } from "next-themes"
 import React, { ReactNode } from "react"
 import { AccentThemeProvider } from "@/components/AccentThemeProvider"
+import AnimatedBackground from "@/components/AnimatedBackground"
 import Footer from "@/components/Footer"
 import Header from "@/components/Header"
-import { PageHeaderProvider } from "@/components/PageHeaderProvider"
 import { siteMetadata } from "@/data/metadata"
 import { cn } from "@/lib/utils"
 
@@ -61,25 +61,23 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       >
         <ThemeProvider attribute="class" defaultTheme="dark">
           <AccentThemeProvider>
-            <PageHeaderProvider>
-              {/* Dot Background Layer */}
+              {/* Animated Background (dark mode) + Light mode dot grid fallback */}
+              <AnimatedBackground />
               <div
                 className={cn(
-                  "fixed inset-0 -z-10",
+                  "fixed inset-0 -z-10 dark:hidden",
                   "bg-[radial-gradient(circle,#d1d5db_1px,transparent_1px)]",
-                  "dark:bg-[radial-gradient(circle,#3f3f46_1px,transparent_1px)]",
-                  "bg-size-[30px_30px]",
+                  "bg-[size:30px_30px]",
                   "mask-[radial-gradient(ellipse_50%_50%_at_50%_50%,#000_60%,transparent_100%)]"
                 )}
               />
               <Header />
-              <main className="grow container mx-auto px-4 py-6">
+              <main className="grow container mx-auto px-4 pt-24 pb-6">
                 {children}
                 <Analytics />
                 <SpeedInsights />
               </main>
               <Footer />
-            </PageHeaderProvider>
           </AccentThemeProvider>
         </ThemeProvider>
       </body>

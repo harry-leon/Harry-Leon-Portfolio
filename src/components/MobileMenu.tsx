@@ -1,117 +1,94 @@
 "use client"
 
-import { motion, AnimatePresence } from "framer-motion"
+import { motion } from "framer-motion"
 import Link from "next/link"
-import { usePathname } from "next/navigation"
-import { useRef, useEffect } from "react"
+import { useEffect, useRef } from "react"
+import { FaArrowRight } from "react-icons/fa"
 import { useClickOutside } from "@/hooks/useClickOutside"
 import { navItems } from "@/lib/constants"
 import { cn } from "@/lib/utils"
 
+interface MobileMenuProps {
+  onClose: () => void
+  onNavigate: (sectionId: string) => void
+  activeSection: string
+  isHome: boolean
+}
+
 /**
- * MobileMenu component that displays a collapsible menu for mobile devices.
- * @param isOpen - Indicates whether the menu is open or closed.
- * @param setIsOpenAction - Function to toggle the menu's open state.
+ * MobileMenu component that slides down from below the floating header.
  */
 export default function MobileMenu({
-  isOpen,
-  setIsOpenAction,
-}: {
-  isOpen: boolean
-  setIsOpenAction: (v: boolean) => void
-}) {
-  const pathname = usePathname()
+  onClose,
+  onNavigate,
+  activeSection,
+  isHome,
+}: MobileMenuProps) {
   const menuRef = useRef<HTMLDivElement | null>(null)
 
-  useClickOutside(menuRef, () => setIsOpenAction(false), { enabled: isOpen, closeOnEscape: false })
+  // Close when clicking outside of the menu container
+  useClickOutside(menuRef, onClose, { enabled: true, closeOnEscape: true })
 
   useEffect(() => {
-    // Prevent scroll when menu is open
-    document.body.style.overflow = isOpen ? "hidden" : ""
+    // Prevent background scroll when mobile menu is open
+    document.body.style.overflow = "hidden"
     return () => {
       document.body.style.overflow = ""
     }
-  }, [isOpen])
+  }, [])
 
   return (
-    <AnimatePresence>
-      {isOpen && (
-        <motion.div
-          ref={menuRef}
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: "auto" }}
-          exit={{ opacity: 0, height: 0 }}
-          transition={{ duration: 0.2, ease: "easeInOut" }}
-          className="md:hidden overflow-hidden border-t border-gray-200 dark:border-gray-800
-                     bg-zinc-50/95 dark:bg-black/95 backdrop-blur-md"
-        >
-          <motion.ul
-            className="flex flex-col gap-2 px-4 py-4"
-            initial="closed"
-            animate="open"
-            exit="closed"
-            variants={{
-              open: {
-                transition: {
-                  staggerChildren: 0.05,
-                  delayChildren: 0.1,
-                },
-              },
-              closed: {
-                transition: {
-                  staggerChildren: 0.03,
-                  staggerDirection: -1,
-                },
-              },
-            }}
-          >
-            {navItems.map(({ name, path }, idx) => (
-              <motion.li
-                key={name}
-                variants={{
-                  open: {
-                    opacity: 1,
-                    x: 0,
-                    transition: {
-                      type: "spring",
-                      stiffness: 300,
-                      damping: 24,
-                    },
-                  },
-                  closed: {
-                    opacity: 0,
-                    x: -20,
-                  },
-                }}
-              >
-                <Link
-                  href={path}
-                  className={cn(
-                    "block w-full px-4 py-3.5 rounded-lg text-base font-medium",
-                    "transition-all duration-200 border active:scale-98",
-                    pathname === path
-                      ? "bg-accent-500 dark:bg-accent-600 text-white border-accent-600 dark:border-accent-500 shadow-md"
-                      : "text-gray-700 dark:text-gray-200 border-gray-300 dark:border-gray-700 hover:border-gray-400 dark:hover:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-800/50"
-                  )}
-                  onClick={() => setIsOpenAction(false)}
-                >
-                  <span className="flex items-center gap-2">
-                    <span
-                      className={cn(
-                        "font-mono text-xs text-gray-500 dark:text-gray-400 select-none",
-                        pathname === path ? "text-white/80" : "text-gray-500 dark:text-gray-400"
-                      )}
-                    >
-                      0{idx + 1}
-                    </span>
-                    {name}
-                  </span>
-                </Link>
-              </motion.li>
-            ))}
-          </motion.ul>
-        </motion.div>
+    <motion.div
+      ref={menuRef}
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -20 }}
+      transition={{ duration: 0.25, ease: "easeOut" }}
+      className={cn(
+        "fixed left-4 right-4 z-40 top-20",
+        "rounded-2xl p-5 border border-white/10",
+        "bg-[rgba(8,8,13,0.95)] backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.5)]",
+        "md:hidden"
       )}
-    </AnimatePresence>
+    >
+      <ul className="flex flex-col gap-2">
+        {navItems.map(({ name, sectionId }) => {
+          const isActive = isHome && activeSection === sectionId
+          return (
+            <li key={sectionId}>
+              <button
+                onClick={() => onNavigate(sectionId)}
+                className={cn(
+                  "w-full text-left px-4 py-3 rounded-xl text-base font-medium transition-all duration-200 cursor-pointer",
+                  isActive
+                    ? "text-violet-300 bg-violet-500/10 border border-violet-500/20 shadow-[0_0_12px_rgba(139,92,246,0.1)]"
+                    : "text-gray-400 border border-transparent hover:text-white hover:bg-white/5"
+                )}
+              >
+                {name}
+              </button>
+            </li>
+          )
+        })}
+
+        {/* Contact CTA in mobile menu */}
+        <li className="mt-4 pt-4 border-t border-white/10">
+          <Link
+            href="/contact"
+            onClick={onClose}
+            className={cn(
+              "flex w-full items-center justify-between px-4 py-3.5 rounded-xl",
+              "text-base font-semibold text-white",
+              "bg-gradient-to-r from-violet-600 to-purple-600",
+              "border border-violet-500/30 shadow-[0_0_20px_rgba(139,92,246,0.2)]",
+              "transition-all duration-200 active:scale-[0.98]"
+            )}
+          >
+            <span>Let&apos;s Talk</span>
+            <FaArrowRight className="h-4 w-4" />
+          </Link>
+        </li>
+      </ul>
+    </motion.div>
   )
 }

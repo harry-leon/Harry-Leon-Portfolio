@@ -144,3 +144,24 @@ vi.mock("framer-motion", () => ({
   AnimatePresence: ({ children }: { children: React.ReactNode }) =>
     React.createElement(React.Fragment, null, children),
 }))
+
+// Mock IntersectionObserver
+class IntersectionObserverMock {
+  readonly root: Element | Document | null = null
+  readonly rootMargin: string = ""
+  readonly thresholds: ReadonlyArray<number> = []
+  constructor(
+    public callback: IntersectionObserverCallback,
+    public options?: IntersectionObserverInit
+  ) {}
+  observe = vi.fn()
+  unobserve = vi.fn()
+  disconnect = vi.fn()
+}
+
+Object.defineProperty(globalThis, "IntersectionObserver", {
+  writable: true,
+  configurable: true,
+  value: IntersectionObserverMock,
+})
+

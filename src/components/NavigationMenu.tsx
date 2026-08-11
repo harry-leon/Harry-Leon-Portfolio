@@ -14,8 +14,8 @@ export default function NavigationMenu() {
   const pathname = usePathname()
 
   const getActiveIndex = (p: string) =>
-    navItems.findIndex(({ path }) =>
-      path === "/" ? p === "/" : p === path || p.startsWith(path + "/")
+    navItems.findIndex(({ sectionId }) =>
+      sectionId === "hero" ? p === "/" : p.includes(sectionId)
     )
 
   const [activeIndex, setActiveIndex] = useState(() => getActiveIndex(pathname))
@@ -51,12 +51,12 @@ export default function NavigationMenu() {
             opacity: activeIndex === -1 ? 0 : 1,
           }}
         ></div>
-        {navItems.map(({ name, path }, idx) => {
-          const isActive = pathname === path
+        {navItems.map(({ name, sectionId }, idx) => {
+          const isActive = activeIndex === idx
           return (
             <li key={name} className="relative z-10 flex justify-center items-center">
               <Link
-                href={path}
+                href={`/#${sectionId}`}
                 aria-current={isActive ? "page" : undefined}
                 className={cn(
                   "relative flex items-center justify-center px-3 py-1.5 rounded-full text-[15px]",

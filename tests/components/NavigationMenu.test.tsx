@@ -31,9 +31,9 @@ describe("NavigationMenu", () => {
   it("renders navigation links with correct hrefs", () => {
     render(<NavigationMenu />)
 
-    navItems.forEach(({ name, path }) => {
+    navItems.forEach(({ name, sectionId }) => {
       const link = screen.getByText(name).closest("a")
-      expect(link?.getAttribute("href")).toBe(path)
+      expect(link?.getAttribute("href")).toBe(`/#${sectionId}`)
     })
   })
 

@@ -1,12 +1,12 @@
+"use client"
+
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { FaCodeBranch } from "react-icons/fa"
 import { footerConfig, socialIconMap } from "@/data/content"
 import { appVersion } from "@/lib/constants"
 import { cn } from "@/lib/utils"
 
-/**
- * Internal component to render social media links
- */
 function SocialLinks() {
   return (
     <>
@@ -15,8 +15,6 @@ function SocialLinks() {
         .map(([platform, url]) => {
           const platformKey = platform as keyof typeof socialIconMap
           const { icon: Icon, label } = socialIconMap[platformKey]
-
-          // Add mailto: prefix for email if not already present
           const href = platform === "email" && !url.startsWith("mailto:") ? `mailto:${url}` : url
 
           return (
@@ -49,36 +47,35 @@ function SocialLinks() {
 }
 
 export default function Footer() {
+  const pathname = usePathname()
+
   return (
     <footer
       className={cn(
-        "relative mt-6 py-6 text-center text-sm text-gray-600 dark:text-gray-400",
-        "px-4 border-t border-gray-200 dark:border-gray-900",
-        "bg-zinc-50/80 dark:bg-zinc-950/80 backdrop-blur-sm",
+        "relative py-6 text-center text-sm text-gray-600 dark:text-gray-400",
+        "px-4 border-t",
+        "mt-6 border-gray-200 dark:border-gray-900 bg-zinc-50/80 dark:bg-zinc-950/80 backdrop-blur-sm",
         "before:content-[''] before:absolute before:top-0 before:left-0 before:right-0",
         "before:h-px before:bg-linear-to-r before:from-transparent",
         "before:via-gray-500/30 before:to-transparent"
       )}
       id="footerPortfolio"
     >
-      {/* Social Links Grid */}
-      <div className="flex justify-center flex-wrap gap-4 mb-4">
+
+      <div className="relative flex justify-center flex-wrap gap-4 mb-4">
         <SocialLinks />
       </div>
 
-      {/* Divider */}
-      <div className="max-w-xs mx-auto mb-4 h-px bg-linear-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
+      <div className="relative max-w-xs mx-auto mb-4 h-px bg-linear-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
 
-      {/* Copyright */}
-      <p className="text-sm mb-2 text-gray-600 dark:text-gray-400">
+      <p className="relative text-sm mb-2 text-gray-600 dark:text-gray-400">
         © {new Date().getFullYear()} {footerConfig.copyrightName}. All rights reserved.
       </p>
 
-      {/* Version & Attribution - Terminal style */}
       {footerConfig.showVersionAndAttribution && (
         <div
           className={cn(
-            "flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3",
+            "relative flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3",
             "text-xs font-mono text-gray-500 dark:text-gray-500"
           )}
         >

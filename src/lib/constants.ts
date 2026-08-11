@@ -1,13 +1,14 @@
 import packageJson from "../../package.json"
 
 /**
- * Array of navigation items for the website (i.e. paths/pages to navigate to).
+ * Navigation items for the one-page landing portfolio.
+ * Each item scrolls to its corresponding section via `sectionId`.
  */
 export const navItems = [
-  { name: "Home", path: "/" },
-  { name: "Education", path: "/work" },
-  { name: "Projects", path: "/projects" },
-  { name: "Contact", path: "/contact" },
+  { name: "Home", sectionId: "hero" },
+  { name: "About", sectionId: "about" },
+  { name: "Skills", sectionId: "skills" },
+  { name: "Projects", sectionId: "projects" },
 ]
 
 /**

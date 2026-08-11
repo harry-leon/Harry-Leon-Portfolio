@@ -1,0 +1,9 @@
+
+> nextjs-portofolio-website@0.23.1 dev
+> next dev --hostname 127.0.0.1 --port 3001
+
+▲ Next.js 16.2.12 (Turbopack)
+- Local:         http://127.0.0.1:3001
+- Network:       http://127.0.0.1:3001
+✓ Ready in 2.2s
+[?25h

@@ -25,7 +25,7 @@ export const homeIntroConfig = {
   /**
    * Your full name (used in breadcrumbs, footer, and other places)
    */
-  name: "Ha Thuc Quoc Hung",
+  name: "HarryLeon",
 
   /**
    * Your short/first name (optional - used in "Hi, I'm..." greeting)

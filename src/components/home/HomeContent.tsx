@@ -67,7 +67,7 @@ export default function HomeContent({ work, projects }: HomeContentProps) {
   return (
     <MotionConfig reducedMotion="user">
       <section className="px-4 max-w-5xl mx-auto">
-        <div className="mt-2 min-h-[calc(100vh-11rem)] grid items-center gap-10 lg:grid-cols-[minmax(0,1.4fr)_minmax(300px,0.8fr)]">
+        <div id="hero" className="mt-2 min-h-[calc(100vh-11rem)] grid items-center gap-10 lg:grid-cols-[minmax(0,1.4fr)_minmax(300px,0.8fr)]">
           <div>
             <motion.div
               initial="hidden"
@@ -113,42 +113,48 @@ export default function HomeContent({ work, projects }: HomeContentProps) {
             transition={{ duration: 0.55, ease: "easeOut" }}
             className="mx-auto w-full max-w-sm [perspective:1600px]"
           >
+            {/* Gradient border wrapper */}
             <div
               className={cn(
-                "group relative aspect-[4/5] overflow-hidden rounded-[2rem] border border-gray-300/80 dark:border-gray-800",
-                "bg-zinc-950 shadow-[0_20px_70px_rgba(0,0,0,0.22)] backdrop-blur-sm",
-                "transition-transform duration-300 hover:-translate-y-2 hover:rotate-x-2 hover:-rotate-y-2"
+                "group relative aspect-[4/5] overflow-hidden rounded-3xl",
+                "bg-gradient-to-br from-violet-500/60 via-purple-600/40 to-violet-400/50 p-[2px]",
+                "shadow-[0_0_40px_rgba(139,92,246,0.15),0_0_80px_rgba(139,92,246,0.08)]",
+                "transition-shadow duration-500 hover:shadow-[0_0_50px_rgba(139,92,246,0.25),0_0_100px_rgba(139,92,246,0.12)]"
               )}
-              style={{ transformStyle: "preserve-3d" }}
             >
-              <div
-                aria-hidden="true"
-                className="absolute -right-16 -top-16 h-44 w-44 rounded-full bg-accent-500/20 blur-3xl transition-transform duration-300 group-hover:scale-110"
-                style={{ transform: "translateZ(30px)" }}
-              />
-              <div
-                aria-hidden="true"
-                className="absolute -left-12 bottom-8 h-28 w-28 rounded-full bg-cyan-400/15 blur-3xl transition-transform duration-300 group-hover:scale-110"
-                style={{ transform: "translateZ(24px)" }}
-              />
-              <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.2),transparent_35%,transparent_65%,rgba(168,85,247,0.08))] dark:bg-[linear-gradient(135deg,rgba(255,255,255,0.06),transparent_35%,transparent_65%,rgba(34,211,238,0.06))]" />
+              {/* Inner card */}
+              <div className="relative h-full w-full overflow-hidden rounded-[calc(1.5rem-2px)] bg-zinc-950">
+                {/* Decorative glow orbs */}
+                <div
+                  aria-hidden="true"
+                  className="absolute -right-16 -top-16 h-44 w-44 rounded-full bg-violet-500/20 blur-3xl"
+                />
+                <div
+                  aria-hidden="true"
+                  className="absolute -left-12 bottom-8 h-28 w-28 rounded-full bg-purple-400/15 blur-3xl"
+                />
 
-              <Image
-                src={heroProfile.imageSrc}
-                alt={heroProfile.imageAlt}
-                fill
-                priority
-                className="object-cover transition-transform duration-500 group-hover:scale-[1.06]"
-                sizes="(min-width: 1024px) 420px, 90vw"
-                style={{ transform: "translateZ(36px)" }}
-              />
+                {/* Light sheen overlay */}
+                <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.06),transparent_35%,transparent_65%,rgba(139,92,246,0.06))]" />
 
-              <div className="absolute inset-0 bg-linear-to-t from-black/40 via-black/10 to-transparent transition-opacity duration-300 group-hover:from-black/32" />
+                <Image
+                  src={heroProfile.imageSrc}
+                  alt={heroProfile.imageAlt}
+                  fill
+                  priority
+                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                  sizes="(min-width: 1024px) 420px, 90vw"
+                />
+
+                {/* Bottom gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/10 to-transparent" />
+              </div>
             </div>
           </motion.div>
         </div>
 
         <motion.div
+          id="about"
           initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
@@ -167,6 +173,7 @@ export default function HomeContent({ work, projects }: HomeContentProps) {
         </motion.div>
 
         <motion.div
+          id="projects"
           initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.16 }}
@@ -180,6 +187,7 @@ export default function HomeContent({ work, projects }: HomeContentProps) {
           whileInView="visible"
           variants={fadeUpVariants}
           viewport={{ once: true, margin: "-100px" }}
+          id="skills"
           className="mt-20"
         >
           <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-gray-900 dark:text-white">
