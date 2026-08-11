@@ -27,8 +27,7 @@ export function Timeline({ children }: { children: React.ReactNode }) {
       className="relative border-l-2 border-gray-300 dark:border-gray-700 ml-2 sm:ml-4 max-w-4xl w-full"
       variants={container}
       initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, amount: 0.2 }}
+      animate="show"
     >
       {children}
     </motion.div>
@@ -64,8 +63,7 @@ export function TimelineItem({ title, duration, location, children }: TimelineIt
       <motion.div
         className="absolute -left-2.25 top-5 w-4.5 h-4.5 bg-accent-500 dark:bg-accent-400 rounded-full border-2 border-white dark:border-gray-900 shadow-sm"
         initial={{ scale: 0 }}
-        whileInView={{ scale: 1 }}
-        viewport={{ once: true }}
+        animate={{ scale: 1 }}
         transition={{ type: "spring", stiffness: 300, damping: 20 }}
       />
 

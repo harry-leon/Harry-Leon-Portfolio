@@ -20,18 +20,16 @@ export default function BlogPreview({ blog }: BlogPreviewProps) {
   return (
     <motion.div
       initial="hidden"
-      whileInView="visible"
+      animate="visible"
       variants={fadeUpVariants}
-      viewport={{ once: true, margin: "-100px" }}
       className="mt-20 mb-16"
     >
       <ViewAllHeader title="Recent Blog Posts" pageUrl="/blog" itemCount={blog.length} />
       <div className="@container">
         <motion.div
           initial="hidden"
-          whileInView="visible"
+          animate="visible"
           variants={staggerContainerVariants}
-          viewport={{ once: true, margin: "-50px" }}
           className="grid gap-4 @[800px]:grid-cols-3"
         >
           {posts.map(post => (

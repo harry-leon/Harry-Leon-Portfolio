@@ -16,19 +16,12 @@ export default function WorkPreview({ work }: WorkPreviewProps) {
   const items = sortWorkItems(work, "newest").slice(0, homeIntroConfig.workItemsToShow)
 
   return (
-    <motion.div
-      initial="hidden"
-      whileInView="visible"
-      variants={fadeUpVariants}
-      viewport={{ once: true, margin: "-100px" }}
-      className="mt-20"
-    >
+    <motion.div initial="hidden" animate="visible" variants={fadeUpVariants} className="mt-20">
       <ViewAllHeader title="Education & Training" pageUrl="/work" itemCount={work.length} />
       <motion.div
         initial="hidden"
-        whileInView="visible"
+        animate="visible"
         variants={staggerContainerVariants}
-        viewport={{ once: true, margin: "-50px" }}
         className="grid gap-4"
       >
         {items.map((job, i) => (

@@ -90,9 +90,8 @@ export default function HomeContent({ work, projects }: HomeContentProps) {
 
               <motion.div
                 initial="hidden"
-                whileInView="visible"
+                animate="visible"
                 variants={staggerContainerVariants}
-                viewport={{ once: true }}
                 className="space-y-4 max-w-3xl ml-0"
               >
                 {homeIntroConfig.introParagraphs.map((paragraph, index) => (
@@ -157,8 +156,7 @@ export default function HomeContent({ work, projects }: HomeContentProps) {
         <motion.div
           id="about"
           initial={{ opacity: 0, y: 28 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.65, ease: "easeOut", delay: 0.05 }}
         >
           <QuickFacts />
@@ -166,8 +164,7 @@ export default function HomeContent({ work, projects }: HomeContentProps) {
 
         <motion.div
           initial={{ opacity: 0, y: 28 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.16 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.65, ease: "easeOut", delay: 0.1 }}
         >
           <WorkPreview work={work} />
@@ -176,8 +173,7 @@ export default function HomeContent({ work, projects }: HomeContentProps) {
         <motion.div
           id="projects"
           initial={{ opacity: 0, y: 28 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.16 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.65, ease: "easeOut", delay: 0.14 }}
         >
           <ProjectsPreview projects={projects} />
@@ -185,9 +181,8 @@ export default function HomeContent({ work, projects }: HomeContentProps) {
 
         <motion.div
           initial="hidden"
-          whileInView="visible"
+          animate="visible"
           variants={fadeUpVariants}
-          viewport={{ once: true, margin: "-100px" }}
           id="skills"
           className="mt-20"
         >

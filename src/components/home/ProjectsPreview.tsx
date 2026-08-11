@@ -16,19 +16,12 @@ export default function ProjectsPreview({ projects }: ProjectsPreviewProps) {
   const items = sortProjects(projects, "newest").slice(0, homeIntroConfig.projectsToShow)
 
   return (
-    <motion.div
-      initial="hidden"
-      whileInView="visible"
-      variants={fadeUpVariants}
-      viewport={{ once: true, margin: "-100px" }}
-      className="mt-20"
-    >
+    <motion.div initial="hidden" animate="visible" variants={fadeUpVariants} className="mt-20">
       <ViewAllHeader title="Recent Projects" pageUrl="/projects" itemCount={projects.length} />
       <motion.div
         initial="hidden"
-        whileInView="visible"
+        animate="visible"
         variants={staggerContainerVariants}
-        viewport={{ once: true, margin: "-50px" }}
         className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6"
       >
         {items.map((proj, index) => (
