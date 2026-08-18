@@ -1,0 +1,102 @@
+---
+title: Integrated Home Safety System V2
+image: /projects/integrated-home-safety-system-v2/dashboard-preview.png
+description: A full-stack IoT smart lock and home safety platform combining ESP32 sensor telemetry, Spring Boot APIs, JWT/RBAC security, and a real-time React dashboard.
+startDate: 2026-04
+endDate: 2026-04
+techStack:
+  - Java 17
+  - Spring Boot 3.2
+  - Spring Security
+  - Spring Data JPA
+  - Spring WebSocket
+  - Flyway
+  - PostgreSQL
+  - H2
+  - JWT
+  - React 19
+  - Vite
+  - TailwindCSS
+  - Three.js
+  - ESP32
+  - Blynk
+  - Docker
+  - GitHub Actions
+role: Full-stack Developer / Backend and IoT Integration
+githubUrl: https://github.com/harry-leon/Integrated-Home-Safety-System-V2.git
+---
+
+# Overview
+
+**Integrated Home Safety System V2** is a full-stack IoT smart lock and home safety platform built around an ESP32 device, a Spring Boot backend, and a React dashboard. The system centralizes access control, sensor telemetry, alert handling, fingerprint management, and admin operations into a single web interface.
+
+The platform targets common smart-home safety problems: fragmented device control, limited visibility into real-time sensor data, weak auditability, and slow response to home security events.
+
+## System Scope
+
+- **Smart lock control:** remote lock and unlock commands, device online status, command tracking, and Blynk-based ESP32 command delivery.
+- **Sensor telemetry:** ESP32 ingestion for MQ2 gas, LDR light, PIR motion, temperature, and weather-related telemetry.
+- **Fingerprint management:** enroll, rename, and delete fingerprint slots with backend-side slot allocation and ESP32 command dispatch.
+- **Alerts and audit logs:** gas leak, fire, intruder, wrong-password, tamper, battery-low, and offline alert workflows with CSV export.
+- **Admin operations:** user management, role changes, device access grants, settings, notification preferences, and login-session visibility.
+- **Dashboard experience:** live telemetry charts, WebSocket updates, 3D house visualization, dark/light theme, Vietnamese/English language support, and voice command controls.
+
+## My Responsibilities
+
+- Built and organized backend modules for authentication, device management, commands, alerts, telemetry, access logs, analytics, settings, and admin workflows.
+- Implemented JWT authentication, role-based access control, and step-up verification for sensitive operations such as lock toggles and fingerprint changes.
+- Designed JPA entities, repositories, DTOs, services, and Flyway migrations for users, devices, commands, alerts, fingerprints, settings, sensor data, and weekly reports.
+- Integrated Blynk Cloud APIs and ESP32 telemetry endpoints so hardware events could flow into the backend and dashboard in real time.
+- Developed dashboard features for live monitoring, remote control, analytics, logs, fingerprint administration, settings, and user management.
+- Added deployment and verification support through Docker, Vercel/Render configuration, and GitHub Actions.
+
+## Core Capabilities
+
+- **Authentication and authorization:** JWT login, register, logout, role-based access for Admin, Member, and Viewer users, plus verification tokens for sensitive actions.
+- **Device command flow:** REST APIs create backend command records, send instructions through Blynk virtual pins, and track command status for the smart lock device.
+- **Real-time monitoring:** ESP32 posts telemetry to the backend, which persists sensor data and broadcasts updates to the dashboard over STOMP/SockJS WebSocket topics.
+- **Safety alerts:** sensor and device conditions generate actionable alerts, support resolution workflows, and can be exported for review.
+- **Fingerprint workflows:** admins can allocate fingerprint slots, rename access profiles, delete entries, and push enrollment/delete commands to ESP32 firmware.
+- **Analytics and reporting:** dashboard snapshots, weekly reports, access history, and device metrics help owners inspect system behavior over time.
+
+## Architecture
+
+### Hardware and IoT Layer
+
+ESP32 firmware reads MQ2 gas, LDR light, and PIR motion sensors, then sends readings to both Blynk Cloud virtual pins and the Spring Boot backend through HTTP telemetry posts. Backend-to-device control also uses Blynk virtual pins for lock control, fingerprint enrollment, fingerprint deletion, and display messages.
+
+### Backend
+
+The backend is a Spring Boot 3.2 application using Java 17, Spring Security, Spring Data JPA, Spring WebSocket, Flyway, and springdoc-openapi. It follows a controller-service-repository structure with DTO boundaries and centralized exception handling. Local development can use H2, while production is configured for PostgreSQL.
+
+### Frontend
+
+The active dashboard is a Vite and React 19 single-page application. It uses React Router, Tailwind CSS, Three.js, STOMP.js, SockJS, and context providers for authentication, theme, language, time/weather, voice commands, and alert modals.
+
+### Delivery
+
+The repository includes Docker support for the backend, Vercel configuration for the frontend, Render deployment hooks, and GitHub Actions workflows for backend build plus frontend lint/build verification.
+
+## Security Model
+
+The system uses a layered security model:
+
+- JWT bearer tokens authenticate normal API requests.
+- Role-based access control separates Admin, Member, and Viewer capabilities.
+- Step-up re-authentication returns a short-lived verification token.
+- Sensitive actions require the `X-Verification-Token` header.
+- Device access is modeled separately so users can be granted per-device permissions.
+- Audit and access logs preserve operational history for remote, password, fingerprint, RFID, and physical-key access methods.
+
+## Notable Implementation Details
+
+- WebSocket endpoint: `/ws-smart-lock`
+- Telemetry ingestion endpoint: `/api/telemetry/report`
+- Main backend package: `com.smartlock`
+- Main dashboard routes: Dashboard, Remote Control, Fingerprints, Logs, Analytics, Settings, User Management
+- Database migrations: `V1` through `V11`
+- Seeded development roles: Admin, Member, Viewer
+
+## Links
+
+- [Source code on GitHub](https://github.com/harry-leon/Integrated-Home-Safety-System-V2.git)
